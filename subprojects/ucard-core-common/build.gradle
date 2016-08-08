@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        maven { url "https://repo.spring.io/libs-release" }
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.10.RELEASE")
+    }
+}
+
+apply plugin: 'groovy'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://repo.spring.io/libs-release" }
+}
+
+dependencies {
+    compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.4.5'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.6'
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.2.8'
+    compile group: 'org.mybatis', name: 'mybatis-spring', version: '1.2.2'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.38'
+    compile group: 'org.mybatis.scripting', name: 'mybatis-velocity', version: '1.2'
+    compile group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '1.3.3.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.3.3.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '1.2.3.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version: '4.2.5.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version: '4.1.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jdbc', version: '4.2.6.RELEASE'
+    compile group: 'org.codehaus.janino', name: 'janino', version: '2.7.8'
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '8.0.33'
+    compile group: 'org.apache.tomcat', name: 'tomcat-jdbc', version: '8.0.32'
+    compile group: 'org.apache.tomcat', name: 'tomcat-juli', version: '7.0.50'
+    testCompile("junit:junit")
+
+    compile rootProject.fileTree(dir: rootProject.libDir, include: '*.jar')
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2.1'
+}
+
+sourceSets.main {
+    java.srcDirs = []
+    groovy.srcDirs += "src/main/java"
+}

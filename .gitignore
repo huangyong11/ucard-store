@@ -1,0 +1,17 @@
+output
+out
+bin
+*build
+.classpath
+.gradle
+.idea
+.project
+.settings
+*.log
+*.iml
+*.iws
+*.ipr
+*.swp
+*.log*
+*.class
+local
